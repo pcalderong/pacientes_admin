@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Info Contactos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Telefono</th>
+      <th>Nombre contacto</th>
+      <th>Parentesco</th>
+      <th>Fk id paciente</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @info_contactos.each do |info_contacto| %>
+      <tr>
+        <td><%= info_contacto.telefono %></td>
+        <td><%= info_contacto.nombre_contacto %></td>
+        <td><%= info_contacto.parentesco %></td>
+        <td><%= info_contacto.fk_id_paciente %></td>
+        <td><%= link_to 'Show', info_contacto %></td>
+        <td><%= link_to 'Edit', edit_info_contacto_path(info_contacto) %></td>
+        <td><%= link_to 'Destroy', info_contacto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Info contacto', new_info_contacto_path %>

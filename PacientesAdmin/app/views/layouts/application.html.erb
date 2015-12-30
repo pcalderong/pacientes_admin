@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pacientes - Proyecto Daniel</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "table-responsive", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "style", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "style-responsive", media: "all", "data-turbolinks-track" => true %>
+
+
+
+  <%= javascript_include_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag    "bootstrap.min", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag    "bootstrap-switch", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag    "jquery", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag    "jquery-1.8.3.min", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag    "jquery.dcjqaccordion.2.7", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag    "jquery.scrollTo.min", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag    "jquery.nicescroll", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag    "jquery.sparkline", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag    "common-scripts", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag    "jquery.gritter", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag    "gritter-conf", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag    "sparkline-chart", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag    "zabuto_calendar", media: "all", "data-turbolinks-track" => true %>
+
+
+  <%= csrf_meta_tags %>
+</head>
+<body> 
+    <header class="header black-bg">
+              <div class="sidebar-toggle-box">
+                  <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+              </div>
+            <!--logo start-->
+            <a href="index.html" class="logo"><b>PACIENTES - PROYECTO DANIEL</b></a>
+            <!--logo end-->
+            <div class="nav notify-row" id="top_menu">
+
+            </div>
+            <div class="top-menu">
+              <ul class="nav pull-right top-menu">
+                    <li><a class="logout" href="login.html">Logout</a></li>
+              </ul>
+            </div>
+        </header>
+
+        <!-- **********************************************************************************************************************************************************
+      MAIN SIDEBAR MENU
+      *********************************************************************************************************************************************************** -->
+      <!--sidebar start-->
+      <aside>
+          <div id="sidebar"  class="nav-collapse ">
+              <!-- sidebar menu start-->
+              <ul class="sidebar-menu" id="nav-accordion">
+
+                  <li class="sub-menu">
+                      <a href="javascript:;" >
+                          <i class="fa fa-desktop"></i>
+                          <span>Pacientes</span>
+                      </a>
+                      <ul class="sub">
+                          <li><a  href="general.html">Ingresar</a></li>
+                          <li><a  href="buttons.html">Buscar</a></li>
+                          <li><a  href="panels.html"></a>Exportar</li>
+                      </ul>
+                  </li>
+                  <li class="sub-menu">
+                      <a href="javascript:;" >
+                          <i class="fa fa-book"></i>
+                          <span>Importar Pacientes</span>
+                      </a>
+                      <ul class="sub">
+                          <li><a  href="blank.html">Blank Page</a></li>
+                          <li><a  href="login.html">Login</a></li>
+                          <li><a  href="lock_screen.html">Lock Screen</a></li>
+                      </ul>
+                  </li>
+                  <li class="sub-menu">
+                      <a href="javascript:;" >
+                          <i class="fa fa-tasks"></i>
+                          <span>Reportes</span>
+                      </a>
+                      <ul class="sub">
+                          <li><a  href="form_component.html">Reporte sobre Z</a></li>
+                      </ul>
+                  </li>
+                  <li class="sub-menu">
+                      <a href="javascript:;" >
+                          <i class="fa fa-th"></i>
+                          <span>Data Tables</span>
+                      </a>
+                      <ul class="sub">
+                          <li><a  href="basic_table.html">Basic Table</a></li>
+                          <li><a  href="responsive_table.html">Responsive Table</a></li>
+                      </ul>
+                  </li>
+                  <li class="sub-menu">
+                      <a href="javascript:;" >
+                          <i class=" fa fa-bar-chart-o"></i>
+                          <span>Graficos</span>
+                      </a>
+                      <ul class="sub">
+                          <li><a  href="morris.html">Reporte 1</a></li>
+                          <li><a  href="chartjs.html">Reporte 2</a></li>
+                      </ul>
+                  </li>
+
+              </ul>
+              <!-- sidebar menu end-->
+          </div>
+      </aside>
+      <!--sidebar end-->
+
+
+
+      <section id="main-content">
+          <section class="wrapper">
+            <%= yield %>
+          </section>
+        </section>
+
+
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+          $(".sidebar-toggle-box").click(function(){
+              $(".nav-collapse").toggle();
+          });
+  </script>
+  
+  // <script type="application/javascript">
+  //       $(document).ready(function () {
+  //           $("#date-popover").popover({html: true, trigger: "manual"});
+  //           $("#date-popover").hide();
+  //           $("#date-popover").click(function (e) {
+  //               $(this).hide();
+  //           });
+        
+  //           $("#my-calendar").zabuto_calendar({
+  //               action: function () {
+  //                   return myDateFunction(this.id, false);
+  //               },
+  //               action_nav: function () {
+  //                   return myNavFunction(this.id);
+  //               },
+  //               ajax: {
+  //                   url: "show_data.php?action=1",
+  //                   modal: true
+  //               },
+  //               legend: [
+  //                   {type: "text", label: "Special event", badge: "00"},
+  //                   {type: "block", label: "Regular event", }
+  //               ]
+  //           });
+  //       });
+        
+        
+  //       function myNavFunction(id) {
+  //           $("#date-popover").hide();
+  //           var nav = $("#" + id).data("navigation");
+  //           var to = $("#" + id).data("to");
+  //           console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
+  //       }
+  //   </script>
+
+</body>
+</html>
