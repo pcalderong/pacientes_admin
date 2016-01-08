@@ -13,12 +13,16 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: 5
-  username: pcaldero
-  password: pcaldero
+  host: 173.194.84.5
+
+
 
 development:
   <<: *default
-  database: PacientesAdmin_dev
+  database: pacientes-dev1
+  username: pdaniel
+  port: 3306
+  password: Daniel1988 
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
