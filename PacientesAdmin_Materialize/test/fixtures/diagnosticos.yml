@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fecha: 2015-11-24 17:01:04
+  description: MyText
+  fk_id_persona: 1
+
+two:
+  fecha: 2015-11-24 17:01:04
+  description: MyText
+  fk_id_persona: 1

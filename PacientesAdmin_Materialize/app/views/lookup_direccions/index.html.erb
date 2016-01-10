@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Lookup Direccions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Parent</th>
+      <th>Value</th>
+      <th>Descripcion</th>
+      <th>Type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lookup_direccions.each do |lookup_direccion| %>
+      <tr>
+        <td><%= lookup_direccion.parent %></td>
+        <td><%= lookup_direccion.value %></td>
+        <td><%= lookup_direccion.descripcion %></td>
+        <td><%= lookup_direccion.type %></td>
+        <td><%= link_to 'Show', lookup_direccion %></td>
+        <td><%= link_to 'Edit', edit_lookup_direccion_path(lookup_direccion) %></td>
+        <td><%= link_to 'Destroy', lookup_direccion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Lookup direccion', new_lookup_direccion_path %>

@@ -1,0 +1,29 @@
+<%= form_for(@diagnostico) do |f| %>
+  <% if @diagnostico.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@diagnostico.errors.count, "error") %> prohibited this diagnostico from being saved:</h2>
+
+      <ul>
+      <% @diagnostico.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :fecha %><br>
+    <%= f.datetime_select :fecha %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :fk_id_persona %><br>
+    <%= f.number_field :fk_id_persona %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

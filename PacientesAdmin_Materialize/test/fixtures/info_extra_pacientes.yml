@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  estudiante: false
+  trabajador: false
+  lugar_estudio_trabajo: MyString
+  hijos: false
+  cant_hijos: 1
+  referencia_trab_social: false
+  ayuda_alimentos: false
+  ayuda_medicamento: false
+  fk_id_persona: MyString
+
+two:
+  estudiante: false
+  trabajador: false
+  lugar_estudio_trabajo: MyString
+  hijos: false
+  cant_hijos: 1
+  referencia_trab_social: false
+  ayuda_alimentos: false
+  ayuda_medicamento: false
+  fk_id_persona: MyString

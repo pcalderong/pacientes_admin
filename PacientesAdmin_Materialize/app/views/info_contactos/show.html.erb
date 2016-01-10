@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Telefono:</strong>
+  <%= @info_contacto.telefono %>
+</p>
+
+<p>
+  <strong>Nombre contacto:</strong>
+  <%= @info_contacto.nombre_contacto %>
+</p>
+
+<p>
+  <strong>Parentesco:</strong>
+  <%= @info_contacto.parentesco %>
+</p>
+
+<p>
+  <strong>Fk id paciente:</strong>
+  <%= @info_contacto.fk_id_paciente %>
+</p>
+
+<%= link_to 'Edit', edit_info_contacto_path(@info_contacto) %> |
+<%= link_to 'Back', info_contactos_path %>
