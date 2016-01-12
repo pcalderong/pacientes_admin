@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+    
+  get "/login", to: redirect('/auth/google_oauth2')
+    
+ 
+  # [START sessions]
+  get '/auth/google_oauth2/callback', to: 'sessions#create'
+
+  resource :session, only: [:create, :destroy]
+    
   resources :historial_clinicos
   resources :direccions
   resources :lookup_direccions

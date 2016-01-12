@@ -8,10 +8,20 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+    
+    <% if logged_in? %>
+      <% if current_user.image_url %>
+        <%= image_tag current_user.image_url, class: "img-circle", width: 24 %>
+        <span>
+        <%= current_user.name %> &nbsp;
+        <%= link_to "(logout)", logout_path %>
+    </span>
+    <% end %>
+
   <div class="wrap">
     <nav class="nav-bar navbar-inverse" role="navigation">
         <div id ="top-menu" class="container-fluid active">
-            <a class="navbar-brand" href="#">Brand</a>
+            <a class="navbar-brand" href="#">Proyecto Daniel</a>
             <ul class="nav navbar-nav">
                 <form id="qform" class="navbar-form pull-left" role="search">
                    <input type="text" class="form-control" placeholder="Search" />
@@ -19,8 +29,8 @@
                 <li class="dropdown movable">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="caret"></span><span class="fa fa-4x fa-child"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="#"><span class="fa fa-user"></span>My Profile</a></li>
-                        <li><a href="#"><span class="fa fa-gear"></span>Settings</a></li>
+                        <li><a href="#"><span class="fa fa-user"></span>Login</a></li>
+                        <%= link_to "Login", login_path , class:'fa fa-user' %>
                         <li class="divider"></li>
                         <li><a href="#"><span class="fa fa-power-off"></span>Logout</a></li>
                     </ul>
