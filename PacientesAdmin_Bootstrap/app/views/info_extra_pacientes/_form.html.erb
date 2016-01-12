@@ -1,0 +1,53 @@
+<%= form_for(@info_extra_paciente) do |f| %>
+  <% if @info_extra_paciente.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@info_extra_paciente.errors.count, "error") %> prohibited this info_extra_paciente from being saved:</h2>
+
+      <ul>
+      <% @info_extra_paciente.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :estudiante %><br>
+    <%= f.check_box :estudiante %>
+  </div>
+  <div class="field">
+    <%= f.label :trabajador %><br>
+    <%= f.check_box :trabajador %>
+  </div>
+  <div class="field">
+    <%= f.label :lugar_estudio_trabajo %><br>
+    <%= f.text_field :lugar_estudio_trabajo %>
+  </div>
+  <div class="field">
+    <%= f.label :hijos %><br>
+    <%= f.check_box :hijos %>
+  </div>
+  <div class="field">
+    <%= f.label :cant_hijos %><br>
+    <%= f.number_field :cant_hijos %>
+  </div>
+  <div class="field">
+    <%= f.label :referencia_trab_social %><br>
+    <%= f.check_box :referencia_trab_social %>
+  </div>
+  <div class="field">
+    <%= f.label :ayuda_alimentos %><br>
+    <%= f.check_box :ayuda_alimentos %>
+  </div>
+  <div class="field">
+    <%= f.label :ayuda_medicamento %><br>
+    <%= f.check_box :ayuda_medicamento %>
+  </div>
+  <div class="field">
+    <%= f.label :fk_id_persona %><br>
+    <%= f.text_field :fk_id_persona %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
