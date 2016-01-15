@@ -5,103 +5,103 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag    'menu'%>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" %>
+
+
   <%= csrf_meta_tags %>
 </head>
 <body>
-    
-    <% if logged_in? %>
-      <% if current_user.image_url %>
-        <%= image_tag current_user.image_url, class: "img-circle", width: 24 %>
-        <span>
-        <%= current_user.name %> &nbsp;
-        <%= link_to "(logout)", logout_path %>
-    </span>
+
+
+<div class="background-orange">
+    <div class="wrap">
+      <nav class="nav-bar navbar-inverse header" role="navigation">
+          <div id ="top-menu" class="container-fluid active header">
+              <a class="navbar-brand" href="#">
+                <%= image_tag 'logo2_104.jpg', class:'logo'%>
+              <ul class="nav navbar-nav">
+                  <form id="qform" class="navbar-form pull-left" role="search">
+                     <input type="text" class="form-control" placeholder="Buscar" />
+                   </form>
+                  <li class="dropdown movable">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="caret"></span><span class="fa fa-4x fa-child"></span></a>
+                      <ul class="dropdown-menu" role="menu">
+                          <li>
+                            <%= link_to login_path do %>
+                                <i class="fa fa-user"><span class="tab">Ingresar</span></i>
+                            <% end %>
+                          <li class="divider"></li>
+                          <li><%= link_to new_persona_path do %>
+                              <i class="fa fa-power-off"><span class="tab">Salir</span></i>
+                          <% end %>
+                      </ul>
+                  </li>
+                  <li>
+                    <p class="navbar-text navbar-right">
+  <% if logged_in? %>
+    <% if current_user.image_url %>
+      <%= image_tag current_user.image_url, class: "img-circle", width: 24 %>
     <% end %>
+    <span>
+      <%= current_user.name %> &nbsp;
+      <%# [START logout] %>
+      <%= link_to "(logout)", logout_path %>
+    </span>
+  <% else %>
+    <%= link_to "Login", login_path %>
+  <% end %>
+</p>
+                  </li>
 
-  <div class="wrap">
-    <nav class="nav-bar navbar-inverse" role="navigation">
-        <div id ="top-menu" class="container-fluid active">
-            <a class="navbar-brand" href="#">Proyecto Daniel</a>
-            <ul class="nav navbar-nav">
-                <form id="qform" class="navbar-form pull-left" role="search">
-                   <input type="text" class="form-control" placeholder="Search" />
-                 </form>
-                <li class="dropdown movable">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="caret"></span><span class="fa fa-4x fa-child"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="#"><span class="fa fa-user"></span>Login</a></li>
-                        <%= link_to "Login", login_path , class:'fa fa-user' %>
-                        <li class="divider"></li>
-                        <li><a href="#"><span class="fa fa-power-off"></span>Logout</a></li>
-                    </ul>
-                </li>
+              </ul>
+          </div>
+      </nav>
+      <aside id="side-menu" class="aside" role="navigation">
+            <ul class="nav nav-list accordion">
 
-            </ul>
+              <li class="nav-header">
+                <div class="link"><i class="fa fa-lg fa-users"></i>Pacientes<i class="fa fa-chevron-down"></i></div>
+                <ul class="submenu">
+                  <li><%= link_to "Agregar Paciente", new_persona_path %></li>
+                  <li><a href="#">Buscar Paciente</a></li>
+                  <li><%= link_to "Mostrar Paciente", personas_path %></li>
+                  <li><%= link_to "Importar Paciente", personas_import_path %></li>
+                </ul>
+              </li>
+
+              <li class="nav-header">
+                <div class="link"><i class="fa fa-file-text-o"></i>Documentos<i class="fa fa-chevron-down"></i></div>
+                <ul class="submenu">
+                  <li><a href="#">Plantilla - Importar</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-header">
+                <div class="link"><i class="fa fa-lg fa-bar-chart"></i>Reportes<i class="fa fa-chevron-down"></i></div>
+                <ul class="submenu">
+                  <li><a href="#">Ubicación</a></li>
+                  <li><a href="#">Padecimiento</a></li>
+                  <li><a href="#">Período</a></li>
+                </ul>
+              </li>
+
+          </ul>
+      </aside>
+
+      <!--Body content-->
+      <div class="content">
+        <div class="top-bar">
+          <a href="#menu" class="side-menu-link burger">
+            <span class='burger_inside' id='bgrOne'></span>
+            <span class='burger_inside' id='bgrTwo'></span>
+            <span class='burger_inside' id='bgrThree'></span>
+          </a>
         </div>
-    </nav>
-    <aside id="side-menu" class="aside" role="navigation">
-          <ul class="nav nav-list accordion">
-            <li class="nav-header">
-              <div class="link"><i class="fa fa-lg fa-globe"></i>Portal<i class="fa fa-chevron-down"></i></div>
-              <ul class="submenu">
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="#">Settings</a></li>
-                <li><a href="#">Administration</a></li>
-              </ul>
-            </li>
-
-            <li class="nav-header">
-              <div class="link"><i class="fa fa-lg fa-users"></i>Users<i class="fa fa-chevron-down"></i></div>
-              <ul class="submenu">
-                <li><a href="#">Users</a></li>
-                <li><a href="#">New User</a></li>
-              </ul>
-            </li>
-
-            <li class="nav-header">
-              <div class="link"><i class="fa fa-cloud"></i>Sites<i class="fa fa-chevron-down"></i></div>
-              <ul class="submenu">
-                <li><a href="#">Search Sites</a></li>
-                <li><a href="#">New Site</a></li>
-                <li><a href="#">Jobs</a></li>
-              </ul>
-            </li>
-
-             <li class="nav-header">
-              <div class="link"><i class="fa fa-lg fa-map-marker"></i>Zones<i class="fa fa-chevron-down"></i></div>
-              <ul class="submenu">
-                <li><a href="#">Search Zones</a></li>
-                <li><a href="#">New Zone</a></li>
-              </ul>
-            </li>
-
-            <li class="nav-header">
-              <div class="link"><i class="fa fa-lg fa-file-image-o"></i>Reports<i class="fa fa-chevron-down"></i></div>
-              <ul class="submenu">
-                <li><a href="#">Entries</a></li>
-                <li><a href="#">Redirects</a></li>
-                <li><a href="#">Pingbacks</a></li>
-                <li><a href="#">Tags</a></li>
-              </ul>
-            </li>
-
-        </ul>
-    </aside>
-
-    <!--Body content-->
-    <div class="content">
-      <div class="top-bar">
-        <a href="#menu" class="side-menu-link burger">
-          <span class='burger_inside' id='bgrOne'></span>
-          <span class='burger_inside' id='bgrTwo'></span>
-          <span class='burger_inside' id='bgrThree'></span>
-        </a>
+        <section class="content-inner">
+          <p><%= yield %></p>
+        </section>
       </div>
-      <section class="content-inner">
-        <h2>Sample</h2>
-        <h3><%= yield %></h3>
-      </section>
     </div>
-  </div>
+</div>
 </body>
 </html>

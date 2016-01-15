@@ -1,8 +1,11 @@
+<ul class="nav nav-tabs">
+  <li role="presentation"><%= link_to 'Información Personal', new_persona_path %></li>
+  <li role="presentation" class="active" ><%= link_to 'Información - Contactos', info_contactos_path %></li>
+  <li role="presentation"><a href="#">Messages</a></li>
+</ul>
+
 <p id="notice"><%= notice %></p>
-
-<h1>Listing Info Contactos</h1>
-
-<table>
+<table class="table table-hover table-condensed table-striped" height="75%">
   <thead>
     <tr>
       <th>Telefono</th>
@@ -14,12 +17,12 @@
   </thead>
 
   <tbody>
-    <% @info_contactos.each do |info_contacto| %>
+
+    <%= @persona.info_contactos.each do |f| %>
       <tr>
-        <td><%= info_contacto.telefono %></td>
-        <td><%= info_contacto.nombre_contacto %></td>
-        <td><%= info_contacto.parentesco %></td>
-        <td><%= info_contacto.fk_id_paciente %></td>
+        <td><%= f.telefono %></td>
+        <td><%= f.nombre_contacto %></td>
+        <td><%= f.parentesco %></td>
         <td><%= link_to 'Show', info_contacto %></td>
         <td><%= link_to 'Edit', edit_info_contacto_path(info_contacto) %></td>
         <td><%= link_to 'Destroy', info_contacto, method: :delete, data: { confirm: 'Are you sure?' } %></td>

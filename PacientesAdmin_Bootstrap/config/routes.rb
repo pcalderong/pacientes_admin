@@ -1,20 +1,27 @@
 Rails.application.routes.draw do
-    
+
   get "/login", to: redirect('/auth/google_oauth2')
-    
- 
+  # [START logout]
+ get "/logout", to: "sessions#destroy"
+ # [END logout]
+
+resources :usuarios
+
+ get "/personas/export" => "personas#export"
+ get "/personas/import" => "personas#import" 
   # [START sessions]
   get '/auth/google_oauth2/callback', to: 'sessions#create'
 
   resource :session, only: [:create, :destroy]
-    
-  resources :historial_clinicos
-  resources :direccions
+
   resources :lookup_direccions
-  resources :diagnosticos
-  resources :info_extra_pacientes
-  resources :info_contactos
-  resources :personas
+  resources :personas do
+    resources :info_contactos
+    resources :diagnosticos
+    resources :info_extra_pacientes
+    resources :historial_clinicos
+    resources :direccions
+  end
   resources :persona_imports
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

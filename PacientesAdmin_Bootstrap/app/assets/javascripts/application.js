@@ -13,5 +13,9 @@
 //= require jquery
 //= require bootstrap
 //= require jquery_ujs
+//= require dataTables/jquery.dataTables
+ //= require bootstrap-datepicker
 //= require turbolinks
 //= require_tree .
+jQuery ->
+  $("#pacientes_table").dataTable()

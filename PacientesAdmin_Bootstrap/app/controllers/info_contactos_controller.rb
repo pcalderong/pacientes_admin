@@ -4,7 +4,9 @@ class InfoContactosController < ApplicationController
   # GET /info_contactos
   # GET /info_contactos.json
   def index
-    @info_contactos = InfoContacto.all
+    @persona = Persona.find(params[:persona_id])
+    @info_contacto = @persona.info_contactos.all
+    format.html { render :show }
   end
 
   # GET /info_contactos/1
@@ -24,15 +26,15 @@ class InfoContactosController < ApplicationController
   # POST /info_contactos
   # POST /info_contactos.json
   def create
-    @info_contacto = InfoContacto.new(info_contacto_params)
-
+    @persona = Persona.find(params[:persona_id])
+    @info_contacto = @persona.info_contactos.new(info_contacto_params)
     respond_to do |format|
       if @info_contacto.save
-        format.html { redirect_to @info_contacto, notice: 'Info contacto was successfully created.' }
-        format.json { render :show, status: :created, location: @info_contacto }
+        format.html { redirect_to @persona, notice: 'Info contacto was successfully created.' }
+        format.json { render :show, status: :created, location: @persona }
       else
         format.html { render :new }
-        format.json { render json: @info_contacto.errors, status: :unprocessable_entity }
+        format.json { render json: @persona.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -40,8 +42,9 @@ class InfoContactosController < ApplicationController
   # PATCH/PUT /info_contactos/1
   # PATCH/PUT /info_contactos/1.json
   def update
+    @persona = Persona.find(params[:persona_id])
     respond_to do |format|
-      if @info_contacto.update(info_contacto_params)
+      if @persona.info_contacto.update(info_contacto_params)
         format.html { redirect_to @info_contacto, notice: 'Info contacto was successfully updated.' }
         format.json { render :show, status: :ok, location: @info_contacto }
       else
@@ -54,9 +57,12 @@ class InfoContactosController < ApplicationController
   # DELETE /info_contactos/1
   # DELETE /info_contactos/1.json
   def destroy
+    puts "#{:persona_id}"
+    @persona = Persona.find(params[:persona_id])
+    @info_contacto = @persona.info_contactos.find(params[:id])
     @info_contacto.destroy
     respond_to do |format|
-      format.html { redirect_to info_contactos_url, notice: 'Info contacto was successfully destroyed.' }
+      format.html { redirect_to @persona, notice: 'Contacto Eliminado' }
       format.json { head :no_content }
     end
   end
